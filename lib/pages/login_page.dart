@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -60,6 +61,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
+              MyButton(),
 
               //welcome back
               //username
