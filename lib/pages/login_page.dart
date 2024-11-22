@@ -1,53 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:seo_app/components/logo_tile.dart';
 import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/components/my_textfield.dart';
+import 'package:seo_app/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  void signInUser() {}
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 50),
-
-              const Icon(
-                Icons.lock,
-                size: 100,
-              ),
-
-              const SizedBox(height: 50),
-
-              Text(
-                "Welcome back you have been missed!!",
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
+              const SizedBox(height: 35),
+              const LogoTile(imagePath: 'lib/images/logo.png'),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Let's Sign In",
+                          style: GoogleFonts.montserrat(
+                            color: Colors.black,
+                            fontSize: 30,
+                          ),
+                        ),
+                        Text(
+                          "Welcome back you've been missed",
+                          style: GoogleFonts.montserrat(
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 25),
-
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Enter Username or Email",
+                      style: GoogleFonts.montserrat(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
               MyTextfield(
                 controller: usernameController,
-                hintText: 'Username',
+                hintText: 'Enter Username or Email',
                 obscureText: false,
               ),
               const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Password",
+                      style: GoogleFonts.montserrat(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
               MyTextfield(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: 'Enter Password',
                 obscureText: true,
               ),
-              //logo
-              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Row(
@@ -60,17 +99,49 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 25),
-              MyButton(),
-
-              //welcome back
-              //username
-              //password
-              //forgot password
-              //sign in button
-              //or continue
-              //google+ apple sign in
-              //not a member
+              MyButton(
+                onTap: signInUser,
+                hintText: "Sign In",
+              ),
+              const SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[400],
+                    )),
+                    const SizedBox(width: 10),
+                    const SquareTile(imagePath: 'lib/images/google.png'),
+                    const SizedBox(width: 10),
+                    Expanded(
+                        child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[400],
+                    )),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Not a member?",
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    "Register Now",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
