@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:seo_app/components/logo_tile.dart';
 import 'package:seo_app/components/my_button.dart';
-import 'package:seo_app/components/my_textfield.dart';
-import 'package:seo_app/components/square_tile.dart';
+import 'package:seo_app/pages/login_page.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
 
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-  void signInUser() {}
-  void signUpUser() {}
+  void signInUser(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  void signUpUser() {
+    // Handle Sign Up logic
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,8 @@ class MainPage extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               MyButton(
-                onTap: signInUser,
+                onTap: () =>
+                    signInUser(context), // Pass context to the function
                 hintText: "Sign In",
               ),
               const SizedBox(height: 10),
