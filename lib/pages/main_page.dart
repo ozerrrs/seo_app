@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:seo_app/components/logo_tile.dart';
 import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/pages/login_page.dart';
+import 'package:seo_app/pages/sign_up.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
@@ -14,7 +15,11 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  void signUpUser() {
+  void signUpUser(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignUpPage()),
+    );
     // Handle Sign Up logic
   }
 
@@ -50,7 +55,7 @@ class MainPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               MyButton(
-                onTap: signUpUser,
+                onTap: () => signUpUser(context),
                 hintText: "Sign Up",
                 color: const Color.fromARGB(255, 133, 170, 201),
               ),
