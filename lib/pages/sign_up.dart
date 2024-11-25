@@ -1,141 +1,184 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:seo_app/components/logo_tile.dart';
+import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/components/my_textfield.dart';
+import 'package:seo_app/components/square_tile.dart';
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
 
-  final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  void signInUser() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    Icons.arrow_back,
-                    size: 24,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Sign up,",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  "Increase your SEO power!",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                MyTextfield(
-                  controller: emailController,
-                  hintText: 'Enter Email',
-                  obscureText: false,
-                ),
-                const SizedBox(height: 15),
-                MyTextfield(
-                  controller: usernameController,
-                  hintText: 'Enter Username',
-                  obscureText: false,
-                ),
-                const SizedBox(height: 15),
-                MyTextfield(
-                  controller: passwordController,
-                  hintText: 'Enter Password',
-                  obscureText: true,
-                ),
-                const SizedBox(height: 15),
-                MyTextfield(
-                  controller: confirmPasswordController,
-                  hintText: 'Enter Password Again',
-                  obscureText: true,
-                ),
-                const SizedBox(height: 30),
-                GestureDetector(
-                  onTap: () {
-                    debugPrint("Google Sign Up clicked");
-                  },
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Image.asset(
-                        'assets/google_logo.png',
-                        height: 24,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
-                GestureDetector(
-                  onTap: () {
-                    debugPrint("Register button clicked");
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.indigo,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Let's Sign Up",
+                              style: GoogleFonts.montserrat(
+                                color: Colors.black,
+                                fontSize: 30,
+                              ),
+                            ),
+                            Text(
+                              "Increase your SEO power!",
+                              style: GoogleFonts.montserrat(
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Do have an account? ",
-                      style: TextStyle(color: Colors.grey),
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          " Email ",
+                          style: GoogleFonts.montserrat(color: Colors.black),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: const Text(
-                        "Login",
+                  ),
+                  MyTextfield(
+                    controller: usernameController,
+                    hintText: 'Enter Email ',
+                    obscureText: false,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          " Username ",
+                          style: GoogleFonts.montserrat(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  MyTextfield(
+                    controller: usernameController,
+                    hintText: 'Enter Username ',
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Password",
+                          style: GoogleFonts.montserrat(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  MyTextfield(
+                    controller: passwordController,
+                    hintText: 'Enter Password',
+                    obscureText: true,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "",
+                          style: GoogleFonts.montserrat(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  MyTextfield(
+                    controller: passwordController,
+                    hintText: 'Enter Password Again',
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 40),
+                  MyButton(
+                    onTap: signInUser,
+                    hintText: "Sign Up",
+                    color: const Color.fromARGB(255, 133, 170, 201),
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        )),
+                        const SizedBox(width: 10),
+                        const SquareTile(imagePath: 'lib/images/google.png'),
+                        const SizedBox(width: 10),
+                        Expanded(
+                            child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        )),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Do have an account? ",
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                      const SizedBox(width: 4),
+                      const Text(
+                        "Login Now",
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
+            Positioned(
+              top: 10,
+              left: 10,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
