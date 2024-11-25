@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:seo_app/pages/login_page.dart';
 import 'package:seo_app/pages/main_page.dart';
 
 void main() {

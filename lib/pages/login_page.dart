@@ -4,13 +4,27 @@ import 'package:seo_app/components/logo_tile.dart';
 import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/components/my_textfield.dart';
 import 'package:seo_app/components/square_tile.dart';
+import 'package:seo_app/pages/main_page.dart';
+import 'package:seo_app/pages/sign_up.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signInUser() {}
+  void signUpUser(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignUpPage()),
+    );
+  }
+
+  void backToMenu(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MainPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +116,6 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   MyButton(
-                    onTap: signInUser,
                     hintText: "Sign In",
                   ),
                   const SizedBox(height: 40),
@@ -135,11 +148,15 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                       const SizedBox(width: 4),
-                      const Text(
-                        "Register Now",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () => signUpUser(
+                            context), // Dokunma olayını burada tanımlıyoruz.
+                        child: const Text(
+                          "Register Now",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -153,7 +170,7 @@ class LoginPage extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  backToMenu(context);
                 },
               ),
             ),

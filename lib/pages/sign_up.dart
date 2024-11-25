@@ -4,13 +4,30 @@ import 'package:seo_app/components/logo_tile.dart';
 import 'package:seo_app/components/my_button.dart';
 import 'package:seo_app/components/my_textfield.dart';
 import 'package:seo_app/components/square_tile.dart';
+import 'package:seo_app/pages/login_page.dart';
+import 'package:seo_app/pages/main_page.dart';
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
 
+  final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signInUser() {}
+  final confirmPasswordController = TextEditingController();
+
+  void signInUser(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  void backToMenu(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MainPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +81,8 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   MyTextfield(
-                    controller: usernameController,
-                    hintText: 'Enter Email ',
+                    controller: emailController, // Email kontrolörü
+                    hintText: 'Enter Email',
                     obscureText: false,
                   ),
                   Padding(
@@ -81,8 +98,8 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   MyTextfield(
-                    controller: usernameController,
-                    hintText: 'Enter Username ',
+                    controller: usernameController, // Username kontrolörü
+                    hintText: 'Enter Username',
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),
@@ -99,7 +116,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   MyTextfield(
-                    controller: passwordController,
+                    controller: passwordController, // Password kontrolörü
                     hintText: 'Enter Password',
                     obscureText: true,
                   ),
@@ -109,20 +126,20 @@ class SignUpPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          "",
+                          "Confirm Password",
                           style: GoogleFonts.montserrat(color: Colors.black),
                         ),
                       ],
                     ),
                   ),
                   MyTextfield(
-                    controller: passwordController,
+                    controller:
+                        confirmPasswordController, // Confirm password kontrolörü
                     hintText: 'Enter Password Again',
                     obscureText: true,
                   ),
                   const SizedBox(height: 40),
                   MyButton(
-                    onTap: signInUser,
                     hintText: "Sign Up",
                     color: const Color.fromARGB(255, 133, 170, 201),
                   ),
@@ -156,11 +173,15 @@ class SignUpPage extends StatelessWidget {
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                       const SizedBox(width: 4),
-                      const Text(
-                        "Login Now",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () => signInUser(
+                            context), // Dokunma olayını burada tanımlıyoruz.
+                        child: const Text(
+                          "Login Now",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -174,7 +195,7 @@ class SignUpPage extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  backToMenu(context);
                 },
               ),
             ),
